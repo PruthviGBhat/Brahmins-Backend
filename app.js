@@ -6,6 +6,8 @@ import { errorMiddleware } from "./error/error.js";
 import reservationRouter from "./routes/reservation.js";
 const port = process.env.PORT || 4000;
 const app = express();
+app.options('*', cors());
+
 dotenv.config({ path: "./config/config.env" });
 
 app.use(
