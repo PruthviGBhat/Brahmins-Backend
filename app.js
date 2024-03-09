@@ -4,7 +4,7 @@ import cors from "cors";
 import { dbConnection } from "./database/dbConnection.js";
 import { errorMiddleware } from "./error/error.js";
 import reservationRouter from "./routes/reservation.js";
-
+const port = process.env.PORT || 3000;
 const app = express();
 dotenv.config({ path: "./config/config.env" });
 
@@ -23,8 +23,8 @@ dbConnection();
 app.use(errorMiddleware)
 app.use("/api/reservation", reservationRouter);
 
-app.listen(process.env.PORT, ()=>{
-  console.log(`SERVER HAS STARTED AT PORT ${process.env.PORT}`);
+app.listen(port, ()=>{
+  console.log(`SERVER HAS STARTED AT PORT ${port}`);
 })
 
 export default app;
